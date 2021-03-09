@@ -1,0 +1,1 @@
+~/axis2/bin/java2wsdl.sh -cp build/classes/ -cn calculator.CalculatorService -o build/classes/META-INF
