@@ -5,8 +5,8 @@
             <xs:element name="sumar">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="args0" type="xs:int"/>
-                        <xs:element name="args1" type="xs:int"/>
+                        <xs:element name="s1" type="xs:int"/>
+                        <xs:element name="s2" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -20,8 +20,8 @@
             <xs:element name="restar">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="args0" type="xs:int"/>
-                        <xs:element name="args1" type="xs:int"/>
+                        <xs:element name="min" type="xs:int"/>
+                        <xs:element name="sus" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -35,8 +35,8 @@
             <xs:element name="multiplicar">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="args0" type="xs:int"/>
-                        <xs:element name="args1" type="xs:int"/>
+                        <xs:element name="m1" type="xs:int"/>
+                        <xs:element name="m2" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -47,23 +47,11 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="hello">
-                <xs:complexType>
-                    <xs:sequence/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="helloResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
             <xs:element name="dividir">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="args0" type="xs:int"/>
-                        <xs:element name="args1" type="xs:int"/>
+                        <xs:element name="num" type="xs:int"/>
+                        <xs:element name="den" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -100,12 +88,6 @@
     <wsdl:message name="dividirResponse">
         <wsdl:part name="parameters" element="ns:dividirResponse"/>
     </wsdl:message>
-    <wsdl:message name="helloRequest">
-        <wsdl:part name="parameters" element="ns:hello"/>
-    </wsdl:message>
-    <wsdl:message name="helloResponse">
-        <wsdl:part name="parameters" element="ns:helloResponse"/>
-    </wsdl:message>
     <wsdl:portType name="CalculatorServicePortType">
         <wsdl:operation name="sumar">
             <wsdl:input message="ns:sumarRequest" wsaw:Action="urn:sumar"/>
@@ -122,10 +104,6 @@
         <wsdl:operation name="dividir">
             <wsdl:input message="ns:dividirRequest" wsaw:Action="urn:dividir"/>
             <wsdl:output message="ns:dividirResponse" wsaw:Action="urn:dividirResponse"/>
-        </wsdl:operation>
-        <wsdl:operation name="hello">
-            <wsdl:input message="ns:helloRequest" wsaw:Action="urn:hello"/>
-            <wsdl:output message="ns:helloResponse" wsaw:Action="urn:helloResponse"/>
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="CalculatorServiceSoap11Binding" type="ns:CalculatorServicePortType">
@@ -159,15 +137,6 @@
         </wsdl:operation>
         <wsdl:operation name="dividir">
             <soap:operation soapAction="urn:dividir" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="hello">
-            <soap:operation soapAction="urn:hello" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -214,15 +183,6 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="hello">
-            <soap12:operation soapAction="urn:hello" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-        </wsdl:operation>
     </wsdl:binding>
     <wsdl:binding name="CalculatorServiceHttpBinding" type="ns:CalculatorServicePortType">
         <http:binding verb="POST"/>
@@ -255,15 +215,6 @@
         </wsdl:operation>
         <wsdl:operation name="dividir">
             <http:operation location="dividir"/>
-            <wsdl:input>
-                <mime:content type="application/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="application/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="hello">
-            <http:operation location="hello"/>
             <wsdl:input>
                 <mime:content type="application/xml" part="parameters"/>
             </wsdl:input>
