@@ -31,20 +31,17 @@ public class CalculatorClient {
             display_options();
             System.out.println("Introduzca una opción: ");
 
-            option = scan.nextLine();
+            option = scan.next();
 
             if (option.equals("s")) {
-                System.out.println("Enter s1: ");
-    
-
+                System.out.println("Enter s1: ");    
                 int s1 = scan.nextInt();
-                System.out.println("Enter s2: ");
-    
 
+                System.out.println("Enter s2: ");
                 int s2 = scan.nextInt();
 
                 sum(s1, s2);
-                continue;
+        
 
             } else if (option.equals("m")) {
                 System.out.println("Enter m1: ");
@@ -54,7 +51,7 @@ public class CalculatorClient {
                 int m2 = scan.nextInt();
 
                 mul(m1, m2);
-                continue;
+        
 
             } else if (option.equals("d")) {
                 System.out.println("Enter num: ");
@@ -64,7 +61,7 @@ public class CalculatorClient {
                 int den = scan.nextInt();
 
                 div(num, den);
-                continue;
+        
 
             } else if (option.equals("r")) {
                 System.out.println("Enter min: ");
@@ -74,8 +71,6 @@ public class CalculatorClient {
                 int sus = scan.nextInt();
 
                 res(min, sus);
-                continue;
-
             }
 
         }
