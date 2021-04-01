@@ -47,5 +47,20 @@
  
 
     </target>
+
+
+    <target name="client.compile">
+        <javac srcdir="src" destdir="${dest.dir.classes}"
+                includes="calculator/CalculatorClient.java">
+            <classpath refid="build.class.path" />
+        </javac>
+    </target>
+    
+    <target name="client.run">
+        <java classname="calculator.CalculatorClient" fork="true">
+            <classpath refid="build.class.path" />
+    
+        </java>
+    </target>
  
 </project>
