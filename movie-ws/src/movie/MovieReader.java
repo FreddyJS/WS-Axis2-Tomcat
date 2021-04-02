@@ -36,17 +36,14 @@ public class MovieReader {
 
     public static String parse_movie(Document doc) throws Exception {
 
-        // Instantiate the Factory
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        // optional, but recommended
-        // process XML securely, avoid attacks like XML External Entities (XXE)
+
         dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
         doc.getDocumentElement().normalize();
 
         System.out.println("Root Element: " + doc.getDocumentElement().getNodeName());
         System.out.println("------------");
 
-        // get <staff>
         NodeList list = doc.getElementsByTagName("movie");
 
         for (int temp = 0; temp < list.getLength(); temp++) {
@@ -57,7 +54,6 @@ public class MovieReader {
 
                 Element element = (Element) node;
 
-                // get staff's attribute
                 String title = element.getAttribute("title");
                 String year = element.getAttribute("year");
                 String plot = element.getAttribute("plot");
