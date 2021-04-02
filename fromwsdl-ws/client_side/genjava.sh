@@ -1,1 +1,1 @@
-~/axis2/bin/wsdl2java.sh -uri Noticia.wsdl
+~/axis2/bin/wsdl2java.sh -s -uri Noticia.wsdl

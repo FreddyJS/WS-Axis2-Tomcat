@@ -2,14 +2,15 @@ package noticia;
 
 import noticia.NoticiaStub;
 import noticia.NoticiaStub.GetUrl;
+import noticia.NoticiaStub.GetUrlResponse;
 import noticia.NoticiaStub.GetTitular;
+import noticia.NoticiaStub.GetTitularResponse;
 import noticia.NoticiaStub.GetDescripcion;
+import noticia.NoticiaStub.GetDescripcionResponse;
 
 import noticia.NoticiaStub.SetUrl;
 import noticia.NoticiaStub.SetTitular;
 import noticia.NoticiaStub.SetDescripcion;
-
-import noticia.NoticiaCallbackHandler;
 
 import java.util.Scanner;
 import java.io.InputStreamReader;
@@ -46,7 +47,8 @@ public class Client{
 
                 switch(option) {
                     case 1:
-                        stub.startgetTitular(new GetTitular(), new NoticiaCallbackHandler());
+                        GetTitularResponse titular = stub.getTitular(new GetTitular());
+                        System.out.println("Titular: " + titular.get_return());
                         break;
 
                     case 2:
@@ -60,7 +62,8 @@ public class Client{
                         break;
 
                     case 3:
-                        stub.startgetDescripcion(new GetDescripcion(), new NoticiaCallbackHandler());
+                        GetDescripcionResponse descripcion = stub.getDescripcion(new GetDescripcion());
+                        System.out.println("Descripcion: " + descripcion.get_return());
                         break;
 
                     case 4:
@@ -73,7 +76,8 @@ public class Client{
                         break;
 
                     case 5:
-                        stub.startgetUrl(new GetUrl(), new NoticiaCallbackHandler());
+                        GetUrlResponse url = stub.getUrl(new GetUrl());
+                        System.out.println("Url: " + url.get_return());
                         break;
                     
                     case 6:
