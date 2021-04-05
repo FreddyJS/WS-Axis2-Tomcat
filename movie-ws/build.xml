@@ -13,6 +13,7 @@
         <fileset dir="${axis2.home}/lib">
             <include name="*.jar" />
         </fileset>
+
           <pathelement location="${dest.dir.classes}" />
     </path>
  
@@ -37,6 +38,7 @@
 
         <javac srcdir="src" destdir="${dest.dir.classes}"
             includes="movie/MovieService.java">
+            <classpath refid="build.class.path"/>
         </javac>
 
         <exec executable="/bin/bash">

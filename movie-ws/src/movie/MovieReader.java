@@ -1,8 +1,8 @@
 package movie;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.w3c.dom.Element;
+import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 import javax.xml.XMLConstants;
@@ -16,25 +16,27 @@ public class MovieReader {
     public static final String base_api = "http://www.omdbapi.com/?";
     private static final String apikey = "&r=xml&apikey=13a96bc3";
 
-    public static String get_movie(String movie) {
+    public static Movie get_movie(String movie) {
         try {
             URL url = new URL(base_api + "t=" + movie + apikey);
+            
             URLConnection conn = url.openConnection();
     
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(conn.getInputStream());
-            return parse_movie(doc);
             
+            return parse_movie(doc, url.toString());
+        
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return "";
+        return null;
 
     }
 
-    public static String parse_movie(Document doc) throws Exception {
+    public static Movie parse_movie(Document doc, String api_url) throws Exception {
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -63,11 +65,13 @@ public class MovieReader {
                 System.out.println("Movie Year: " + year);
                 System.out.println("Movie Plot: " + plot);
 
-                return title + " - " + year + " - " + plot;
+                Movie movie = new Movie(title + " - " + year, plot, api_url);
+
+                return movie;
 
             }
         }
 
-        return "";
+        return null;
     }
 }
