@@ -1,0 +1,1 @@
+~/axis2/bin/wsdl2java.sh -s -uri MovieService.wsdl
