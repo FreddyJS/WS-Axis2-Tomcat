@@ -16,6 +16,10 @@ public class MovieService {
         movie = movie.replace(" ", "%20");
         Movie data = MovieReader.get_movie(movie);
 
+        if (data == null) {
+            return "The movie not exists";
+        }
+
 		ServiceClient service = null;
 
 		try {
